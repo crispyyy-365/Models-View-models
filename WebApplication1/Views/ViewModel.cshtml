@@ -1,0 +1,49 @@
+﻿@using WebApplication1.Models;
+@using WebApplication1.ViewModels;
+
+@model HomeVM;
+
+<h6>Products</h6>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>
+				Image
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Dicsount Price
+			</th>
+			<th>
+				Category
+			</th>
+			<th>
+				Color
+			</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach(Product product in Model.products)
+		{
+			<tr>
+				<td>@product.Image</td>
+				<td>@product.Name</td>
+				<td>@product.Description</td>
+				<td>@product.Price</td>
+				<td>@product.Category</td>
+				<td>@product.Color</td>
+			</tr>
+		}
+	</tbody>
+
+</table>
