@@ -33,13 +33,14 @@
 	</thead>
 
 	<tbody>
-		@foreach(Product product in Model.products)
+		@foreach (Product product in Model.products)
 		{
 			<tr>
 				<td>@product.Image</td>
 				<td>@product.Name</td>
 				<td>@product.Description</td>
 				<td>@product.Price</td>
+				<td>@product.DiscountPrice</td>
 				<td>@product.Category</td>
 				<td>@product.Color</td>
 			</tr>
