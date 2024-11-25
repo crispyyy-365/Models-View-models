@@ -6,15 +6,22 @@ namespace WebApplication1.Controllers
 {
 	public class HomeController : Controller
     {
-        public IActionResult Index()
+        public AppDbContext _context;
+        
+        public HomeController(AppDbContext context)
         {
-            List<Product> products = new List<Product>
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            HomeVM homeVm = new HomeVM()
             {
-                new Product {Image = "\"C:\\Users\\User\\Downloads\\S&W_M&P_.40_left_side.jpeg\"", Name = "Smith & Wesson Glock 19", Description = "compact, semi-automatic, 9mm", Price = 180, DiscountPrice = 10, Category = "Handgun", Color = "Olive"}, 
-                new Product {Image = "\"C:\\Users\\User\\Downloads\\m16a4-rifle.jpg\"", Name ="M16-A4", Description = " lightweight, gas-operated, air-cooled, magazine-fed, selective-fire ", Price = 362, DiscountPrice = 20, Category = "Firearm", Color = "Black"}
+                products = await _context.Products
+                .Where(p => p.IsDeleted == false)
+                .Take(4)
+                .Include(x => x.Category)
+                .ToListAsync()
             };
-
-			HomeVM homeVm = new HomeVM { products = products };
 
             return View(homeVm);
         }

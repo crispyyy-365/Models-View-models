@@ -1,7 +1,4 @@
-﻿@using WebApplication1.Models;
-@using WebApplication1.ViewModels;
-
-@model HomeVM;
+﻿@model HomeVM;
 
 <h6>Products</h6>
 
@@ -41,7 +38,7 @@
 				<td>@product.Description</td>
 				<td>@product.Price</td>
 				<td>@product.DiscountPrice</td>
-				<td>@product.Category</td>
+				<td>@product.Category.Name</td>
 				<td>@product.Color</td>
 			</tr>
 		}
